@@ -7,7 +7,9 @@
     "dev": "rollup -c -w",
     "start": "sirv public --no-clear",
     "check": "svelte-check --tsconfig ./tsconfig.json",
-    "train": "nodemon --ignore 'src/lib/train/data/*' src/lib/train/train.ts"
+    "train": "nodemon --ignore 'src/lib/train/data/*' src/lib/train/train.ts",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d public"
   },
   "devDependencies": {
     "@fortawesome/free-brands-svg-icons": "^5.15.4",
@@ -17,6 +19,7 @@
     "@rollup/plugin-node-resolve": "^11.0.0",
     "@rollup/plugin-typescript": "^8.0.0",
     "@tsconfig/svelte": "^2.0.0",
+    "gh-pages": "^3.2.3",
     "nodemon": "^2.0.14",
     "rollup": "^2.3.4",
     "rollup-plugin-css-only": "^3.1.0",
@@ -33,5 +36,6 @@
   },
   "dependencies": {
     "sirv-cli": "^1.0.0"
-  }
+  },
+  "homepage": "."
 }
