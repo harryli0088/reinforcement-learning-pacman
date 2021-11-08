@@ -51,3 +51,15 @@ button:hover {
 button:active {
 	transform: scale(0.9);
 }
+
+.icon-button {
+  cursor: pointer;
+	transition: 0.5s;
+  display: inline-block;
+}
+.icon-button:hover {
+	transform: scale(1.2);
+}
+.icon-button:active {
+	transform: scale(0.9);
+}

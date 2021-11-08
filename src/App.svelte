@@ -1,6 +1,11 @@
 <script lang="ts">
 	import { onMount } from 'svelte'
 
+  import Fa from 'svelte-fa'
+  import { faGithub } from '@fortawesome/free-brands-svg-icons'
+
+  import Blanchor from "./Blanchor.svelte"
+
   import Pacman, { ARENA, DIRECTION, User, WALLS } from "./lib/pacman";
   import selectAction from "./lib/train/selectAction";
   import weights from "./lib/train/data/weights.json"
@@ -9,13 +14,15 @@
 
 
   let canvas: HTMLCanvasElement
+  let game: Pacman | null = null
+  let useAgent = true
 
   onMount(async () => {
-    const game = new Pacman({
+    game = new Pacman({
       arena: ARENA,
       canvas,
       userActCallback: (user: User):DIRECTION => {
-        if(user.onWholeBlock(user.position)) {
+        if(useAgent && user.onWholeBlock(user.position)) {
           return selectAction(
             user.game,
             weights,
@@ -31,19 +38,62 @@
 </script>
 
 <main>
-  <header></header>
+  <header>
+    <div>
+      <h1>Reinforcement Learning Pac-Man</h1>
+
+      <br/>
+
+      <div style="font-size:2em">
+        <Blanchor href="https://github.com/harryli0088/reinforcement-learning-pacman">
+          <Fa class="icon-button" icon={faGithub} style="color:white;"/>
+        </Blanchor>
+      </div>
+    </div>
+  </header>
+
 	<section>
-    <canvas id="pacman" bind:this={canvas}/>
+    <div id="game-container">
+      <canvas id="pacman" bind:this={canvas}/>
+
+      <div><button on:click={() => game && game.startNewGame()}>Start a New Game</button></div>
+
+      <br/>
+
+      <div id="agent-control-buttons">
+        <div><b>How will Pac-Man be controled?</b></div>
+        <div>
+          <button class={useAgent===true && "focused"} on:click={() => useAgent = true}>Using a Pre-Trained Agent</button>
+          &nbsp; or &nbsp;
+          <button class={useAgent===false && "focused"} on:click={() => useAgent = false}>By Myself with Arrow Keys</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <p>For my Reinforcement Learning class, I trained an RL agent to play Pac-Man. Some of the concepts I explored and implemented include:</p>
+    <ul>
+      <li>tree-search state-action encoding</li>
+      <li>n-step semi-gradient Sarsa for policy control</li>
+      <li>linear function approximation and gradient descent</li>
+    </ul>
   </section>
 
   <footer>
-		<p>Built using <a href="https://svelte.dev/" target="_blank" rel="noopener noreferrer">Svelte</a> and <a href="https://www.typescriptlang.org/" target="_blank" rel="noopener noreferrer">Typescript</a></p>
-		<p>Github Repo: <a href="https://github.com/harryli0088/binary-visualized" target="_blank" rel="noopener noreferrer">https://github.com/harryli0088/binary-visualized</a></p>
-		<p>Github Logo provided by Font Awesome: <a href="https://fontawesome.com/license" target="_blank" rel="noopener noreferrer">https://fontawesome.com/license</a></p>
+		<p>Built using <Blanchor href="https://svelte.dev/">Svelte</Blanchor> and <Blanchor href="https://www.typescriptlang.org/">Typescript</Blanchor></p>
+		<p>Based off Dale Harvey's <Blanchor href="https://github.com/daleharvey/pacman">Pac-Man implementation</Blanchor>
+		<p>Github Repo: <Blanchor href="https://github.com/harryli0088/reinforcement-learning-pacman">https://github.com/harryli0088/reinforcement-learning-pacman</Blanchor></p>
+		<p>Github Logo provided by Font Awesome: <Blanchor href="https://fontawesome.com/license">https://fontawesome.com/license</Blanchor></p>
 	</footer>
 </main>
 
 <style>
+  main {
+    width: 100vw;
+    overflow-x: hidden;
+  }
+
 	header, section, footer {
 		padding: 1em;
 	}
@@ -62,14 +112,14 @@
 
 	header {
 		display: flex;
-		flex-direction: column-reverse;
 		align-items: center;
 		justify-content: center;
 		overflow: hidden;
 		background-color: #17202A;
 		color: white;
+    text-align: center;
 	}
-	@media only screen and (min-width: 600px) {
+	/* @media only screen and (min-width: 600px) {
 		header {
 			height: 50vh;
 			flex-direction: row;
@@ -79,7 +129,27 @@
 		header {
 			height: 70vh;
 		}
-	}
+	} */
+
+  #agent-control-buttons button {
+    background-color: transparent;
+    border: 1px solid gray;
+    color: gray
+  }
+  #agent-control-buttons button.focused {
+    background-color: green;
+    border: 1px solid green;
+    color: white
+  }
+
+  #game-container {
+    text-align: center;
+  }
+
+  canvas {
+    width: 100%;
+    max-width: 500px;
+  }
 
 	footer {
 		background-color: #ddd;

@@ -305,7 +305,7 @@ export default class Pacman {
       this.stateChanged = false
       
       shouldDraw && this.map.draw(this.ctx)
-      shouldDraw && this.renderText("Press N to start a New game")
+      shouldDraw && this.renderText("Press N to Start a New Game")
     } else if (
       (this.state === GAME_STATE.EATEN_PAUSE)
       && (this.tick - this.timerStart > this.fps / 3)
