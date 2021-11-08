@@ -5,24 +5,34 @@ import { ACTION_ENCODING } from "./types";
 import type { EncodingFunctionType } from "./types";
 import getDxDy from "./getDxDy";
 
+/**
+ * initializes a tree search encoding for a particular direction
+ * @param game 
+ * @param currentArenaPosition 
+ * @param direction 
+ * @returns if the direction is valid, the tree search encoding, else null
+ */
 const initTreeSearch: EncodingFunctionType = (
   game: Pacman,
   currentArenaPosition: PositionType,
   direction: DIRECTION,
 ) => {
-  const { dx, dy } = getDxDy(direction)
+  const { dx, dy } = getDxDy(direction) //get the change in direction
 
+  //get the tree search averaged state encoding for this direction
   const { encoding, isValidBlock } = treeSearch(
     game,
     currentArenaPosition.x + dx,
     currentArenaPosition.y + dy,
-    { [encodeArenaPosition(currentArenaPosition.x, currentArenaPosition.y)]: true }
+    { //mark the current position as already visited
+      [encodeArenaPosition(currentArenaPosition.x, currentArenaPosition.y)]: true
+    }
   )
 
   if(isValidBlock) { //if our starting block is valid
     return encoding //return the encoding
   }
-  return null //else return null, the action is invalid
+  return null //else the action is invalid, return null
 }
 
 export default initTreeSearch
@@ -36,16 +46,25 @@ const DX_DY = [
   [0,1],
 ]
 
-export function treeSearch(
+/**
+ * this function recursively searches the the arena from a starting point and averages the state encodings between branches
+ * @param game            pacman game
+ * @param x               arena x coordinate
+ * @param y               arena y coordinate
+ * @param visitedTracker  key-value object used to avoid re-visiting blocks
+ * @param depth           how deep to search, decremented after each block visit
+ * @returns               the encoding of the block and whether the block is valid
+ */
+function treeSearch(
   game: Pacman,
   x: number,
   y: number,
   visitedTracker:{[key:string]:boolean} = {},
   depth: number = 10,
-) {
+):{ encoding: number[], isValidBlock: boolean } {
   visitedTracker[encodeArenaPosition(x, y)] = true //mark that we have visited this block
 
-  const encoding = [0,0,0,0] //initialize the encoding to zeros
+  const encoding = [0,0,0,0] //[# dangerous ghosts, # edible ghosts, # pills, # biscuits]
   const { isValidBlock, keepSearching } = encodeBlock(game, x, y, encoding) //analyze this block
 
   //if we should keep searching AND we have not exceeded our search depth
@@ -91,7 +110,12 @@ export function treeSearch(
   }
 }
 
-
+/**
+ * string encode an x and y coordinate
+ * @param x 
+ * @param y 
+ * @returns string encoding
+ */
 function encodeArenaPosition(x:number,y:number) {
   return `${x}-${y}`
 }
