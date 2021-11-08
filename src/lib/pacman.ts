@@ -291,7 +291,7 @@ export default class Pacman {
 
             shouldDraw && this.drawScore(reward.toString(), this.ghostPos[i].new)
           } else if ( //if the user is killed by the ghost
-            g.isDangerous() //if the ghost is dangers
+            g.isDangerous() //if the ghost dangerous
             && this.state !== GAME_STATE.DYING //if pacman is not already dead (in theory pacman can run into multiple ghosts simultaneously)
           ) {
             // this.audio.play("die")
@@ -736,7 +736,7 @@ export class Ghost extends Entity {
     // return this.move() //try moving again
   }
 
-  isDangerous = () => this.eatenAt === null
+  isDangerous = () => this.edibleAt === null && this.eatenAt === null
 
   isHidden = () => this.edibleAt === null && this.eatenAt !== null
 

@@ -1,5 +1,8 @@
 # Pac-Man Reinforcement Learning
 
+https://harryli0088.github.io/reinforcement-learning-pacman/
+
+
 Built using Svelte (https://svelte.dev/) and TypeScript (https://www.typescriptlang.org/)
 
 ## Set up
@@ -8,7 +11,7 @@ Built using Svelte (https://svelte.dev/) and TypeScript (https://www.typescriptl
 
 2. Clone this repository and run `npm install`.
 
-3. To run the Svelte Web App, run `npm run dev`.
+3. To run the Svelte web app, run `npm run dev`. This will start a development web server on http://localhost:5000/
 
 4. To run the training, run `npm run train`. This script uses nodemon to watch your files and re-run if you make any file changes..
 

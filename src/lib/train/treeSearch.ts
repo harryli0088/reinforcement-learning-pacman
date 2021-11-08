@@ -53,6 +53,7 @@ const DX_DY = [
  * @param y               arena y coordinate
  * @param visitedTracker  key-value object used to avoid re-visiting blocks
  * @param depth           how deep to search, decremented after each block visit
+ * @param discountFactor  how much to discount farther states
  * @returns               the encoding of the block and whether the block is valid
  */
 function treeSearch(
@@ -61,6 +62,7 @@ function treeSearch(
   y: number,
   visitedTracker:{[key:string]:boolean} = {},
   depth: number = 10,
+  discountFactor: number = 0.9
 ):{ encoding: number[], isValidBlock: boolean } {
   visitedTracker[encodeArenaPosition(x, y)] = true //mark that we have visited this block
 
@@ -83,12 +85,12 @@ function treeSearch(
         const {
           encoding:nextEncoding,
           isValidBlock
-        } = treeSearch(game, nextX, nextY, visitedTracker, depth-1)
+        } = treeSearch(game, nextX, nextY, visitedTracker, depth-1,discountFactor)
 
         if(isValidBlock) {
           //sum the encodings
           sumNextEncodings.forEach((s,i) => {
-            sumNextEncodings[i] += nextEncoding[i]
+            sumNextEncodings[i] += discountFactor * nextEncoding[i]
           })
           nextValidBlockCount++ //increment the count so we can properly average the encodings later
         }

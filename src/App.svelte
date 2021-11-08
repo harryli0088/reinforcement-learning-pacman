@@ -60,24 +60,29 @@
 
       <br/>
 
-      <div id="agent-control-buttons">
+      <div>
         <div><b>How will Pac-Man be controled?</b></div>
-        <div>
+        <div id="agent-control-buttons">
           <button class={useAgent===true && "focused"} on:click={() => useAgent = true}>Using a Pre-Trained Agent</button>
-          &nbsp; or &nbsp;
+          &nbsp; <span>or</span> &nbsp;
           <button class={useAgent===false && "focused"} on:click={() => useAgent = false}>By Myself with Arrow Keys</button>
         </div>
       </div>
     </div>
   </section>
+  
+  <section><hr/></section>
 
   <section>
+    <h2>Background</h2>
     <p>For my Reinforcement Learning class, I trained an RL agent to play Pac-Man. Some of the concepts I explored and implemented include:</p>
     <ul>
-      <li>tree-search state-action encoding</li>
-      <li>n-step semi-gradient Sarsa for policy control</li>
-      <li>linear function approximation and gradient descent</li>
+      <li><Blanchor href="https://github.com/harryli0088/reinforcement-learning-pacman/blob/main/src/lib/train/treeSearch.ts">tree-search state-action encoding</Blanchor></li>
+      <li><Blanchor href="https://github.com/harryli0088/reinforcement-learning-pacman/blob/main/src/lib/train/nStepSemiGradientSarsa.ts">n-step semi-gradient Sarsa for policy control</Blanchor></li>
+      <li><Blanchor href="https://github.com/harryli0088/reinforcement-learning-pacman/blob/main/src/lib/train/linearQFunction.ts">linear function approximation and gradient descent</Blanchor></li>
     </ul>
+
+    <p>For more background, implementation details, and possible future work, read my full report!</p>
   </section>
 
   <footer>
@@ -131,6 +136,18 @@
 		}
 	} */
 
+  #agent-control-buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 0.5em;
+  }
+  @media only screen and (min-width: 450px) {
+		#agent-control-buttons {
+			flex-direction: row;
+		}
+	}
+
   #agent-control-buttons button {
     background-color: transparent;
     border: 1px solid gray;
@@ -140,6 +157,10 @@
     background-color: green;
     border: 1px solid green;
     color: white
+  }
+
+  #agent-control-buttons span {
+    margin-top: 0.25em;
   }
 
   #game-container {
