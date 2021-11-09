@@ -1080,7 +1080,23 @@ export class Map {
     })
   }
 
-  getBlock = (pos: PositionType) => this.arena[pos.y][pos.x]
+  getBlock = (pos: PositionType) => {
+    const width = this.arena[0].length
+    const y = pos.y
+
+    //allow for wrap-around teleporting
+    let x = pos.x
+    if(x < 0) {
+      x += Math.ceil(-x/width) * width
+    }
+    x %= width
+    
+    const row = this.arena[y]
+    if(row) {
+      return row[x]
+    }
+    return undefined //the block isn't in bounds
+  }
 
   /**
    * returns true if the position is a valid block (ie not a wall)
