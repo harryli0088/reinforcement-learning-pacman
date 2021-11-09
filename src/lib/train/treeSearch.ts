@@ -16,6 +16,7 @@ const initTreeSearch: EncodingFunctionType = (
   game: Pacman,
   currentArenaPosition: PositionType,
   direction: DIRECTION,
+  discountFactor: number = 0.95
 ) => {
   const { dx, dy } = getDxDy(direction) //get the change in direction
 
@@ -26,7 +27,9 @@ const initTreeSearch: EncodingFunctionType = (
     currentArenaPosition.y + dy,
     { //mark the current position as already visited
       [encodeArenaPosition(currentArenaPosition.x, currentArenaPosition.y)]: true
-    }
+    },
+    10,
+    discountFactor
   )
 
   if(isValidBlock) { //if our starting block is valid
