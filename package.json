@@ -1,5 +1,5 @@
 {
-  "name": "svelte-app",
+  "name": "reinforcement-learning-pacman",
   "version": "1.0.0",
   "private": true,
   "scripts": {
@@ -37,5 +37,6 @@
   "dependencies": {
     "sirv-cli": "^1.0.0"
   },
-  "homepage": "."
+  "homepage": ".",
+  "license": "MIT"
 }

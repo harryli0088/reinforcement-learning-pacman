@@ -80,6 +80,7 @@
       <li><Blanchor href="https://github.com/harryli0088/reinforcement-learning-pacman/blob/main/src/lib/train/treeSearch.ts">tree-search state-action encoding</Blanchor></li>
       <li><Blanchor href="https://github.com/harryli0088/reinforcement-learning-pacman/blob/main/src/lib/train/nStepSemiGradientSarsa.ts">n-step semi-gradient Sarsa for policy control</Blanchor></li>
       <li><Blanchor href="https://github.com/harryli0088/reinforcement-learning-pacman/blob/main/src/lib/train/linearQFunction.ts">linear function approximation and gradient descent</Blanchor></li>
+      <li><Blanchor href="https://github.com/harryli0088/reinforcement-learning-pacman/blob/main/src/lib/train/train.ts">training script</Blanchor></li>
     </ul>
 
     <p>For more background, implementation details, and possible future work, read my full report!</p>

@@ -20,6 +20,14 @@ Built using Svelte (https://svelte.dev/) and TypeScript (https://www.typescriptl
 
 I converted Dale Harvey's implementation of Pac-Man (https://github.com/daleharvey/pacman) into TypeScript.
 
+[TypeScript Implementation](/src/lib/pacman.ts)
+
+## Reinforcement Learning
+- [tree-search state-action encoding](/src/lib/train/treeSearch.ts)
+- [n-step semi-gradient Sarsa for policy control](/src/lib/train/nStepSemiGradientSarsa.ts)
+- [linear function approximation and gradient descent](/src/lib/train/linearQFunction.ts)
+- [training script](/src/lib/train/train.ts)
+
 ## Why not Svelte Kit?
 
 I initially tried using Svelte Kit to create this website, but they have a really annoying `"type": "module"` configuration in their `package.json` file that made it tedious to switch between Node.JS training and browser web development. After wasting a lot of time, I decided to just use regular Svelte.
@@ -50,3 +58,7 @@ npm i -D gh-pages
 ...
 ```
 4. Run ```npm deploy``` whenever you want to deploy
+
+## License
+
+MIT License
