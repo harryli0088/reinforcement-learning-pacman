@@ -61,9 +61,9 @@
       <br/>
 
       <div>
-        <div><b>How will Pac-Man be controled?</b></div>
+        <div><b>How should Pac-Man be controled?</b></div>
         <div id="agent-control-buttons">
-          <button class={useAgent===true && "focused"} on:click={() => useAgent = true}>Using a Pre-Trained Agent</button>
+          <button class={useAgent===true && "focused"} on:click={() => useAgent = true}>By a Pre-Trained Agent</button>
           <span>or</span>
           <button class={useAgent===false && "focused"} on:click={() => useAgent = false}>By Myself with Arrow Keys</button>
         </div>
