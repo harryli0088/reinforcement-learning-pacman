@@ -20,13 +20,14 @@ export default function getActionsData(game: Pacman, encodingType:string = "tree
   actions = actions.filter((a,i) => encodings[i] !== null)
   encodings = encodings.filter(e => e !== null)
 
-  const print = []
-  for(let i=0;i<actions.length;++i) {
-    print.push(actions[i])
-    print.push(JSON.stringify(encodings[i]))
-    print.push(", ")
-  }
-  console.log("encodings", ...print)
+  //use this code to debug the state encodings
+  // const print = []
+  // for(let i=0;i<actions.length;++i) {
+  //   print.push(actions[i])
+  //   print.push(JSON.stringify(encodings[i]))
+  //   print.push(", ")
+  // }
+  // console.log("encodings", ...print)
 
   return { actions, encodings }
 }

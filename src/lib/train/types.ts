@@ -29,4 +29,5 @@ export type EncodingFunctionType = (
   game: Pacman,
   currentArenaPosition: PositionType,
   direction: DIRECTION,
+  discountFactor?: number,
 ) => number[] | null
