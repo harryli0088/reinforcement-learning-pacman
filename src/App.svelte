@@ -80,15 +80,20 @@
       <li><Blanchor href="https://github.com/harryli0088/reinforcement-learning-pacman/blob/main/src/lib/train/treeSearch.ts">tree-search state-action encoding</Blanchor></li>
       <li><Blanchor href="https://github.com/harryli0088/reinforcement-learning-pacman/blob/main/src/lib/train/nStepSemiGradientSarsa.ts">n-step semi-gradient Sarsa for policy control</Blanchor></li>
       <li><Blanchor href="https://github.com/harryli0088/reinforcement-learning-pacman/blob/main/src/lib/train/linearQFunction.ts">linear function approximation and gradient descent</Blanchor></li>
-      <li><Blanchor href="https://github.com/harryli0088/reinforcement-learning-pacman/blob/main/src/lib/train/train.ts">training script</Blanchor></li>
     </ul>
 
     <p>For more background, implementation details, and possible future work, read my full report!</p>
   </section>
 
+  <section>
+    <h2>Pac-Man Implementation</h2>
+
+    <p>I converted <Blanchor href="https://github.com/daleharvey/pacman">Dale Harvey's Pac-Man implementation</Blanchor> into TypeScript. You can see my implementation <Blanchor href="https://github.com/harryli0088/reinforcement-learning-pacman/blob/main/src/lib/pacman.ts">here</Blanchor>.</p>
+  </section>
+
   <footer>
 		<p>Built using <Blanchor href="https://svelte.dev/">Svelte</Blanchor> and <Blanchor href="https://www.typescriptlang.org/">Typescript</Blanchor></p>
-		<p>Based off Dale Harvey's <Blanchor href="https://github.com/daleharvey/pacman">Pac-Man implementation</Blanchor>
+		<p>Based off <Blanchor href="https://github.com/daleharvey/pacman">Dale Harvey's Pac-Man implementation</Blanchor>
 		<p>Github Repo: <Blanchor href="https://github.com/harryli0088/reinforcement-learning-pacman">https://github.com/harryli0088/reinforcement-learning-pacman</Blanchor></p>
 		<p>Github Logo provided by Font Awesome: <Blanchor href="https://fontawesome.com/license">https://fontawesome.com/license</Blanchor></p>
 	</footer>

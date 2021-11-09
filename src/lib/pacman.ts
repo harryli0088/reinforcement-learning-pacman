@@ -142,9 +142,19 @@ export default class Pacman {
   init = (canvas?: HTMLCanvasElement, userActCallback?:(user:User) => DIRECTION) => {
     //canvas set up
     if(canvas) {
-      canvas.setAttribute("width", (this.blockSize * this.arena[0].length) + "px")
-      canvas.setAttribute("height", (this.blockSize * this.arena.length) + 30 + "px")
+      //DPR is important for improving the picture quality of the canvas, especially for text
+      //based off this fiddle http://jsfiddle.net/65maD/83/ from this stack answer https://stackoverflow.com/a/54027313
+      const DPR = window.devicePixelRatio
+
+      const height = this.blockSize * this.arena.length + 30
+      const width = this.blockSize * this.arena[0].length
+      canvas.setAttribute("height", `${height*DPR}px`)
+      canvas.setAttribute("width", `${width*DPR}px`)
+      canvas.style.height = `${height}px;`
+      canvas.style.width = `${width}px;`
+
       this.ctx = canvas.getContext('2d')
+      this.ctx.scale(DPR, DPR)
     }
 
     //game initialization
