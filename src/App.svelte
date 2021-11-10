@@ -3,6 +3,7 @@
 
   import Fa from 'svelte-fa'
   import { faGithub } from '@fortawesome/free-brands-svg-icons'
+  import { faFilePdf } from '@fortawesome/free-solid-svg-icons'
 
   import Blanchor from "./Blanchor.svelte"
 
@@ -74,6 +75,8 @@
   <section><hr/></section>
 
   <section>
+    <Blanchor href="./138_HW3_Pac-Man_Harry_Li.pdf"><button style="background-color:orange">Full Report <Fa icon={faFilePdf}/></button></Blanchor>
+
     <h2>Background</h2>
     <p>For my Reinforcement Learning class, I trained an RL agent to play Pac-Man. Some of the concepts I explored and implemented include:</p>
     <ul>
@@ -82,7 +85,7 @@
       <li><Blanchor href="https://github.com/harryli0088/reinforcement-learning-pacman/blob/main/src/lib/train/linearQFunction.ts">linear function approximation and gradient descent</Blanchor></li>
     </ul>
 
-    <p>For more background, implementation details, and possible future work, read my full report!</p>
+    <p>For more background, implementation details, and possible future work, read <Blanchor href="./138_HW3_Pac-Man_Harry_Li.pdf">my full report</Blanchor>!</p>
   </section>
 
   <section>
@@ -101,7 +104,7 @@
 
 <style>
   main {
-    width: 100vw;
+    width: 100%;
     overflow-x: hidden;
   }
 
@@ -129,18 +132,9 @@
 		background-color: #17202A;
 		color: white;
     text-align: center;
+    padding-top: 5em;
+    padding-bottom: 5em;
 	}
-	/* @media only screen and (min-width: 600px) {
-		header {
-			height: 50vh;
-			flex-direction: row;
-		}
-	}
-	@media only screen and (min-width: 1000px) {
-		header {
-			height: 70vh;
-		}
-	} */
 
   #agent-control-buttons {
     display: flex;

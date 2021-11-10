@@ -2,6 +2,9 @@
 
 https://harryli0088.github.io/reinforcement-learning-pacman/
 
+![Screenshot](public/screenshot.png)
+
+[<img src="fullReportButton.png" height="30"/>](public/138_HW3_Pac-Man_Harry_Li.pdf)
 
 Built using Svelte (https://svelte.dev/) and TypeScript (https://www.typescriptlang.org/)
 
